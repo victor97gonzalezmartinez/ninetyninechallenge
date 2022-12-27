@@ -53,6 +53,19 @@ class InitDataConfiguration {
 
 	@Bean
 	fun initData() {
+		logger.info("About to create some data")
+		clearPreviousData()
+
+		val companyIds = initCompanyData()
+		initSharePriceHistoryData(companyIds)
+	}
+
+	private fun clearPreviousData() {
+		companyRepository.deleteAll()
+		sharePriceHistoryRepository.deleteAll()
+	}
+
+	private fun initCompanyData(): List<String> {
 		logger.info("About to init Company data")
 		val amazon = Company(
 			id = "1",
@@ -72,13 +85,11 @@ class InitDataConfiguration {
 			ticker = "MSFT",
 			sharePrice = 99.58
 		)
-
-		val companies = companyRepository.insert(listOf(amazon, google, microsoft))
-		val companyIds = companies.map { it.id }
-		initSharePriceHistory(companyIds)
+		val companies = listOf(amazon, google, microsoft)
+		return companyRepository.insert(companies).map { it.id }
 	}
 
-	private fun initSharePriceHistory(companyIds: List<String>) {
+	private fun initSharePriceHistoryData(companyIds: List<String>) {
 		logger.info("About to init SharePriceHistory data")
 		val now = LocalDateTime.now()
 
@@ -102,6 +113,5 @@ class InitDataConfiguration {
 				sharePriceHistoryRepository.insert(sharePrice)
 			}
 		}
-
 	}
 }
