@@ -15,15 +15,5 @@ import randomSharePrice
 class CompanyService(
     private val companyRepository: CompanyRepository
 ) {
-    private val logger: Logger = LoggerFactory.getLogger(javaClass)
-
     fun findAllCompanies(): List<Company> = companyRepository.findAll()
-
-    @Scheduled(cron = "0/20 * * 1/1 * ?")
-    fun refreshSharePrices() {
-        logger.info("About to refresh sharePrices")
-        companyRepository.findAll().map {
-            companyRepository.save(it.copy(sharePrice = randomSharePrice()))
-        }
-    }
 }
