@@ -12,8 +12,8 @@ class SharePriceHistoryService(
 ) {
     fun findByCompanyIdAndTimeRange(companyId: String, timeRange: TimeRange): List<SharePriceHistory> =
         when(timeRange) {
-            TimeRange.WEEKLY -> sharePriceHistoryRepository.findByCompanyIdAndWeeklyIsTrue(companyId)
-            TimeRange.DAILY -> sharePriceHistoryRepository.findByCompanyIdAndDailyIsTrue(companyId)
-            TimeRange.HOURLY -> sharePriceHistoryRepository.findByCompanyIdAndHourlyIsTrue(companyId)
+            TimeRange.WEEKLY -> sharePriceHistoryRepository.findByCompanyIdAndWeeklyIsTrueOrderByDateDesc(companyId)
+            TimeRange.DAILY -> sharePriceHistoryRepository.findByCompanyIdAndDailyIsTrueOrderByDateDesc(companyId)
+            TimeRange.HOURLY -> sharePriceHistoryRepository.findByCompanyIdAndHourlyIsTrueOrderByDateDesc(companyId)
         }
 }

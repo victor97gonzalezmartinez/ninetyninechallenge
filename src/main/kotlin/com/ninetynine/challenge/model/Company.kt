@@ -8,6 +8,5 @@ data class Company(
     @Id
     val id: String,
     val name: String,
-    val ticker: String,
     val sharePrice: Double
 )

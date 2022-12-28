@@ -68,21 +68,18 @@ class InitDataConfiguration {
 	private fun initCompanyData(): List<String> {
 		logger.info("About to init Company data")
 		val amazon = Company(
-			id = "1",
+			id = "AMZN",
 			name = "Amazon",
-			ticker = "AMZN",
 			sharePrice = 80.22
 		)
 		val google = Company(
-			id = "2",
+			id = "GOOGL",
 			name = "Alphabet",
-			ticker = "GOOGL",
 			sharePrice = 89.17
 		)
 		val microsoft = Company(
-			id = "3",
+			id = "MSFT",
 			name = "Microsoft",
-			ticker = "MSFT",
 			sharePrice = 99.58
 		)
 		val companies = listOf(amazon, google, microsoft)

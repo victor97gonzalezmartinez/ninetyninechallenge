@@ -4,7 +4,7 @@ import com.ninetynine.challenge.model.SharePriceHistory
 import org.springframework.data.mongodb.repository.MongoRepository
 
 interface SharePriceHistoryRepository: MongoRepository<SharePriceHistory, String> {
-    fun findByCompanyIdAndWeeklyIsTrue(companyId: String): List<SharePriceHistory>
-    fun findByCompanyIdAndDailyIsTrue(companyId: String): List<SharePriceHistory>
-    fun findByCompanyIdAndHourlyIsTrue(companyId: String): List<SharePriceHistory>
+    fun findByCompanyIdAndWeeklyIsTrueOrderByDateDesc(companyId: String): List<SharePriceHistory>
+    fun findByCompanyIdAndDailyIsTrueOrderByDateDesc(companyId: String): List<SharePriceHistory>
+    fun findByCompanyIdAndHourlyIsTrueOrderByDateDesc(companyId: String): List<SharePriceHistory>
 }
