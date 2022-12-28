@@ -5,6 +5,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.0"
 	kotlin("jvm") version "1.7.22"
 	kotlin("plugin.spring") version "1.7.22"
+	kotlin("plugin.serialization") version "1.7.20"
 }
 
 group = "com.ninetynine"
@@ -28,6 +29,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("io.springfox:springfox-boot-starter:3.0.0")
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

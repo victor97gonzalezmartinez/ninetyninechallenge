@@ -4,6 +4,7 @@ import com.ninetynine.challenge.model.Company
 import com.ninetynine.challenge.model.SharePriceHistory
 import com.ninetynine.challenge.repository.CompanyRepository
 import com.ninetynine.challenge.repository.SharePriceHistoryRepository
+import kotlinx.serialization.json.Json
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -39,6 +40,12 @@ class SwaggerConfig {
 		).paths(PathSelectors.any())
 			.build()
 	}
+}
+
+@Configuration
+class KotlinSerializationConfiguration {
+	@Bean
+	fun json() = Json
 }
 
 @Configuration
